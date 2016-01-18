@@ -1,0 +1,9 @@
+{
+  "_id": "_design/teams",
+  "language": "javascript",
+  "views": {
+    "list": {
+      "map": "function (doc) {\n    if (doc.type && doc.type === 'teams') {\n        emit(doc.id, doc);\n    }\n};"
+    }
+  }
+}

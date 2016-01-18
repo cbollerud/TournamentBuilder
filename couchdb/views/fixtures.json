@@ -1,0 +1,12 @@
+{
+  "_id": "_design/fixtures",
+  "language": "javascript",
+  "views": {
+    "upcoming": {
+      "map": "function (doc) {\n    if (doc.type && doc.type === 'fixtures') {\n        var now = new Date();\n        var gameDate = new Date(doc.date);\n        if (gameDate >= now) {\n            emit(doc.id, doc);\n        }\n    }\n};\n"
+    },
+    "past": {
+      "map": "function (doc) {\n    if (doc.type && doc.type === 'fixtures') {\n        var now = new Date();\n        var gameDate = new Date(doc.date);\n        if (gameDate < now) {\n            emit(doc.id, doc);\n        }\n    }\n};\n"
+    }
+  }
+}
